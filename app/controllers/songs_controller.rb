@@ -17,8 +17,6 @@ class SongsController < ApplicationController
     @song = Song.create(:name => params[:song][:name])
     @song.artist = Artist.find_or_create_by(:name => params["Artist Name"])
     @song.genre_ids = params[:genres]
-    end
-
     @song.save
 
     flash[:message] = "Successfully created song."
