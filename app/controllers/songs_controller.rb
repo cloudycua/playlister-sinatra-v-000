@@ -16,10 +16,7 @@ class SongsController < ApplicationController
   post '/songs' do
     @song = Song.create(:name => params[:song][:name])
     @song.artist = Artist.find_or_create_by(:name => params["Artist Name"])
-
-    genre_selections = params[:song][:genres]
-    genre_selections.each do |genre|
-      @song.genres << Genre.find(genre)
+    @song.genre_ids = params[:genres]
     end
 
     @song.save
